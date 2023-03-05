@@ -1,38 +1,26 @@
-const entradaUsuario=prompt('¡Benvenutti, llegaste a  Io Sono B&B!');
-const iva = 1.20
-let desayuno=tipo
-let desayuno1=regular
-let desayuno2=vegano
-let desayuno3=vegetariano
-let desayuno4=celiacos
-let total = 0
-let continuar = true
+const entradaUsuario=alert("¡Benvenutti, llegaste a  Io Sono B&B!");
+const ROOM= prompt ("Ingresá tu habtiación");
 
 
+let seleccionDesayuno = parseInt(
+    prompt ( "Seleccione su tipo de desayuno: \n 1.Regular \n 2.Vegatariano \n 3.Vegano \n 4. Sin TACC")
+    );
 
-while (continuar === true){
-let desayuno = (prompt("Seleccion de desayuno: \n 1 regular \n 2 vegano \n vegetariano \n 4 celiacos"))
-
-switch(desayunos){
+switch(seleccionDesayuno){
     case 1:
-        desayuno1 ()
+        alert ("Usted seleccionó el desayuno Regular")
         break
-
-    case 2: 
-        desayuno2 ()
+    case 2:
+        alert ("Usted seleccionó el desayuno Vegetaniano")
         break
-
     case 3:
-        desayuno3 ()
+        alert ("Usted seleccionó el desayuno Vegano")
         break
-
     case 4:
-        desayuno4 ()
+        alert ("Usted seleccionó el desayuno Sin TACC")
         break
-        
     default:
         alert("Agradecemos seleccione un desayuno")
-}
 }
 
 
