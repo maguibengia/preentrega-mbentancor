@@ -22,48 +22,19 @@ switch (seleccionDesayuno) {
         alert("Agradecemos seleccione un desayuno")
 }
 
-function seleccionBebidaDesayuno() {
-    prompt("¿Qué desea beber? \n 1. Café  \n 2.Capuccino \n 3.Té \n 4.Jugo de Naranjas \n 5.Yogurt con granola ");
+function seleccionMenu() {parseFloat
+
+    prompt("¿Qué desea desayunar? \n 1. Café y Huevos Revueltos 5.50 €  \n 2.Capuccino y Croissants de chocolate 6.00 € \n 3.Té y selección de frutas 4.00 € \n 4.Jugo de Naranjas y Yogurt con granola 5.00 €");
     if (seleccionBebidaDesayuno === 1) {
-        alert("Usted seleccionó una Café");
+        alert("Usted seleccionó una Café y Huevos Revueltos ");
     } else if (seleccionDesayuno === 2) {
-        alert("Usted seleccionó un Capuccino");
+        alert("Usted seleccionó un Capuccino y Croissants de chocolate ");
     } else if (seleccionUsuario === 3) {
-        alert("Usted seleccionó un Té");
+        alert("Usted seleccionó un Té y selección de frutas");
     } else if (seleccionUsuario === 4) {
-        alert("Usted seleccionó un Jugo de Naranjas");
-    } else if (seleccionUsuario === 5) {
-        alert("Usted seleccionó un Yogurt con granola");
+        alert("Usted seleccionó un Jugo de Naranjas y Yogurt con granola");
     }
 }
-seleccionBebidaDesayuno()
+seleccionMenu()
 
 
-function seleccionComidaDesayuno() {
-    prompt("¿Qué desea comer? \n 1. Huevos Revueltos  \n 2.Croissantas de chocolate \n 3.Medialunas de Jamón y Queso \n 4. Seleccion de frutas ");
-    if (seleccionComidaDesayuno === 1) {
-        alert("Usted seleccionó una Huevos Revueltos");
-    } else if (seleccionDesayuno === 2) {
-        alert("Usted seleccionó un Croissantas de chocolate");
-    } else if (seleccionUsuario === 3) {
-        alert("Usted seleccionó un Medialunas de Jamón y Queso ");
-    } else if (seleccionUsuario === 4) {
-        alert("Usted seleccionó un Seleccion de frutas");
-    }
-}
-seleccionComidaDesayuno()
-
-function mensajeTotal() {
-    alert("el costo del desayuno es de  € " + IVA)
-}
-mensajeTotal()
-
-alert("Ingrese la opcion del producto que desea llevar, para salir ingrese 0")
-let seleccionarProductos = Number(prompt( "1-buzo $3000 2-remera $1500 3-jean $5000 4-Zapatillas $6000 "))
-let seleccionarCantidad;
-let total = 0;
-
-
-const cantidad = (cant, precio) => {
-  return cant * precio
-}
