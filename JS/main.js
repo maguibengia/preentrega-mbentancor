@@ -1,40 +1,64 @@
-const entradaUsuario = alert("¡Benvenutti, llegaste a Io Sono B&B!");
+const BIENVENIDA = alert("¡Benvenutti, llegaste a Io Sono B&B!");
+const HABITACIONES = prompt("Por favor, ingresa tu habitación:\n -Bubu \n -Tata \n -Lala \n -AbueloGiacoia \n -Abuela Nonna \n -Abuelo Guardo");
 
-const ROOM = prompt("Por favor, ingresa tu habitación:\n -Bubu \n -Tata \n -Lala \n -AbueloGiacoia \n -Abuela Nonna \n -Abuelo Guardo");
+const ROOMS= [
+    { nombre: "Bubu", costo: 85.00, ocupada:true},
+    { nombre: "Tata", costo:85.00, ocupada:false },
+    { nombre: "Lala", costo:50.00, ocupada:true},
+    { nombre: "AbueloGiacoia", costo:50.00, ocupada:false },
+    { nombre: "AbuelaNonna", costo:120.00, ocupada: true },
+    { nombre: "AbueloGuardo", costo:100.00, ocupada:false }
+   ];
 
-let seleccionDesayuno = parseInt(
-    prompt("Seleccione su tipo de desayuno ingresando el número: \n 1.Regular \n 2.Vegatariano \n 3.Vegano \n 4. Sin TACC")
-);
-switch (seleccionDesayuno) {
-    case 1:
-        alert("Usted seleccionó el desayuno Regular")
-        break
-    case 2:
-        alert("Usted seleccionó el desayuno Vegetariano")
-        break
-    case 3:
-        alert("Usted seleccionó el desayuno Vegano")
-        break
-    case 4:
-        alert("Usted seleccionó el desayuno Sin TACC")
-        break
-    default:
-        alert("Agradecemos seleccione un desayuno")
+
+const bebidas = [
+  { nombre: "Jugo de naranja", precio: 1.50 },
+  { nombre: "Café", precio: 2.00 },
+  { nombre: "Capuccino", precio: 2.50 },
+  { nombre: "Té", precio: 1.50 },
+  { nombre: "Leche", precio: 1.50 },
+  { nombre: "Leche de Almendras", precio: 2.50 },
+  { nombre: "Yogur", precio: 2.00 },
+];
+
+const comidas = [ 
+  { nombre: "Huevos revueltos", precio: 1.50 },
+  { nombre: "Croissants de chocolate", precio: 3.00 },
+  { nombre: "Selección de frutas", precio: 2.00 },
+  { nombre: "Panqueques de lentejas", precio: 2.00 },
+  { nombre: "Panqueques de lentejas", precio: 2.00 },
+ 
+];
+
+
+function imprimirMenu(menu) {
+  prompt("----- MENÚ -----");
+  menu.forEach((item) => {
+    prompt(`${item.nombre}: $${item.precio}`);
+  });
+  prompt("-----------------");
 }
 
-function seleccionMenu() {parseFloat
+imprimirMenu(bebidas);
+imprimirMenu(comidas);
 
-    prompt("¿Qué desea desayunar? \n 1. Café y Huevos Revueltos 5.50 €  \n 2.Capuccino y Croissants de chocolate 6.00 € \n 3.Té y selección de frutas 4.00 € \n 4.Jugo de Naranjas y Yogurt con granola 5.00 €");
-    if (seleccionBebidaDesayuno === 1) {
-        alert("Usted seleccionó una Café y Huevos Revueltos ");
-    } else if (seleccionDesayuno === 2) {
-        alert("Usted seleccionó un Capuccino y Croissants de chocolate ");
-    } else if (seleccionUsuario === 3) {
-        alert("Usted seleccionó un Té y selección de frutas");
-    } else if (seleccionUsuario === 4) {
-        alert("Usted seleccionó un Jugo de Naranjas y Yogurt con granola");
-    }
+function calcularTotal(bebidaSeleccionada, comidaSeleccionada) {
+  const bebida = bebidas.find((item) => item.nombre === bebidaSeleccionada);
+
+  const comida = comidas.find((item) => item.nombre === comidaSeleccionada);
+
+  const total = bebida.precio + comida.precio;
+
+  alert(`El total del desayuno es: $${total}`);
 }
-seleccionMenu()
+
+const bebidaSeleccionada = prompt("Por favor, seleccione una bebida:");
+const comidaSeleccionada = prompt("Por favor, seleccione una comida:");
+
+
+calcularTotal(bebidaSeleccionada, comidaSeleccionada);
+
+
+
 
 
