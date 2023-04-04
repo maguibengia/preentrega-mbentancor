@@ -57,6 +57,23 @@ const comidaSeleccionada = prompt("Por favor, seleccione una comida:");
 
 
 calcularTotal(bebidaSeleccionada, comidaSeleccionada);
+// Obtener los elementos del DOM
+const form = document.getElementById('menu-form');
+const items = form.elements['item'];
+const quantity = form.elements['quantity'];
+
+// Crear un objeto para almacenar los datos seleccionados por el usuario
+const selectedItems = {};
+
+// Iterar sobre los elementos seleccionados y agregarlos al objeto
+for (let i = 0; i < items.length; i++) {
+  if (items[i].checked) {
+    selectedItems[items[i].value] = quantity[i].value;
+  }
+}
+
+// Convertir el objeto en JSON y guardarlo en el almacenamiento web
+localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
 
 
 
