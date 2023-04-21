@@ -1,0 +1,102 @@
+[
+    {
+        "id": "bebida-1",
+        "titulo": "café",
+        "categoria": {
+            "nombre": "Bebidas",
+            "id": "bebidas"
+        },
+        "precio": 1.50
+    },
+    {
+        "id": "bebida-2",
+        "titulo": "Capuccino",
+        "categoria": {
+            "nombre": "Bebidas",
+            "id": "bebidas"
+        },
+        "precio": 2.50
+    },
+    {
+        "id": "bebida-3",
+        "titulo": "Jugo de Naranja",
+        "categoria": {
+            "nombre": "Bebidas",
+            "id": "bebidas"
+        },
+        "precio": 1.25
+    },
+    {
+        "id": "bebida-4",
+        "titulo": "Té",
+        "categoria": {
+            "nombre": "Bebidas",
+            "id": "bebidas"
+        },
+        "precio": 1.50
+    },
+ 
+    {
+        "id": "dulces-1",
+        "titulo": "Crossaint de chocolate",
+        "categoria": {
+            "nombre": "Dulces",
+            "id": "dulces"
+        },
+        "precio": 1.50
+    },
+    {
+        "id": "dulces-2",
+        "titulo": "Cannoli",
+        "categoria": {
+            "nombre": "Dulces",
+            "id": "dulces"
+        },
+        "precio": 1.50
+    },
+    {
+        "id": "dulces-3",
+        "titulo": "Torta de Zanahoria",
+        "categoria": {
+            "nombre": "Dulces",
+            "id": "dulces"
+        },
+        "precio": 1.25
+    },
+    {
+        "id": "dulces-4",
+        "titulo": "Cookies",
+        "categoria": {
+            "nombre": "Dulces",
+            "id": "dulces"
+        },
+        "precio": 1.00
+    },
+    {
+        "id": "Salados-1",
+        "titulo": "Huevos revueltos",
+        "categoria": {
+            "nombre": "Salados",
+            "id": "salados"
+        },
+        "precio": 1.00
+    },
+    {
+        "id": "Salados-2",
+        "titulo": "Tostadas",
+        "categoria": {
+            "nombre": "Salados",
+            "id": "salados"
+        },
+        "precio": 1.00
+    },
+    {
+        "id": "Salados-3",
+        "titulo": "Panqueques de zanahoria",
+        "categoria": {
+            "nombre": "Salados",
+            "id": "salados"
+        },
+        "precio": 1.00
+    }
+]

@@ -5,18 +5,81 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IosonoB&B</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Upright&display=swap" rel="stylesheet">
 </head>
 <body>
-    
-    <div class="alert alert-info" role="alert">
-        <h1>BIENVENIDOS, Benvenutti, WELCOME,  con ustedes: IO SONO B&B</h1>
-      </div>
-
-
-    <script src="js/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-</body>
+    <body>
+        <h1>Bienvenidos al desayuno de IoSonoB&B</h1>
+        <h2>Menú de desayuno</h2>
+        <p>Selecciona que deseas desayunar:</p>
+        
+        <div class="wrapper">
+            <header class="header-mobile">
+                <h1 class="logo">IoSonoB&B</h1>
+                <button class="open-menu" id="open-menu">
+                    <i class="bi bi-list"></i>
+                </button>
+            </header>
+            <aside>
+                <button class="close-menu" id="close-menu">
+                    <i class="bi bi-x"></i>
+                </button>
+                <header>
+                    <h1 class="logo">IoSonoB&B</h1>
+                </header>
+                <nav>
+                    <ul class="menu">
+                        <li>
+                            <button id="todos" class="boton-menu boton-categoria active"><i class="bi bi-hand-index-thumb-fill"></i> Menú</button>
+                        </li>
+                        <li>
+                            <button id="abrigos" class="boton-menu boton-categoria"><i class="bi bi-hand-index-thumb"></i> Bebidas</button>
+                        </li>
+                        <li>
+                            <button id="camisetas" class="boton-menu boton-categoria"><i class="bi bi-hand-index-thumb"></i> Dulces</button>
+                        </li>
+                        <li>
+                            <button id="pantalones" class="boton-menu boton-categoria"><i class="bi bi-hand-index-thumb"></i> Salados</button>
+                        </li>
+                        <li>
+                            <a class="boton-menu boton-carrito" href="./menu.html">
+                                <i class="bi bi-cart-fill"></i> Menú <span id="numerito" class="numerito">0</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <footer>
+                    <p class="texto-footer">© 2023 IoSonoB&B</p>
+                </footer>
+            </aside>
+            <main>
+                <h2 class="titulo-principal" id="titulo-principal">Menú</h2>
+                <div id="contenedor-productos" class="contenedor-productos">
+                    <!-- Esto se va a rellenar con JS -->
+                </div>
+            </main>
+        </div>
+        
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+        <script src="./js/main.js"></script>
+        <script src="./js/menu.js"></script>
+    </body>
+    </html>
+      <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="main.js"></script>  
+    <script src="./js/carrito.js"></script>
+    <script src="./js/menu.js"></script>
+  </body>
 </html>

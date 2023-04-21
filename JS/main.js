@@ -1,81 +1,126 @@
-const BIENVENIDA = alert("¡Benvenutti, llegaste a Io Sono B&B!");
-const HABITACIONES = prompt("Por favor, ingresa tu habitación:\n -Bubu \n -Tata \n -Lala \n -AbueloGiacoia \n -Abuela Nonna \n -Abuelo Guardo");
+let productos = [];
 
-const ROOMS= [
-    { nombre: "Bubu", costo: 85.00, ocupada:true},
-    { nombre: "Tata", costo:85.00, ocupada:false },
-    { nombre: "Lala", costo:50.00, ocupada:true},
-    { nombre: "AbueloGiacoia", costo:50.00, ocupada:false },
-    { nombre: "AbuelaNonna", costo:120.00, ocupada: true },
-    { nombre: "AbueloGuardo", costo:100.00, ocupada:false }
-   ];
+fetch("./js/productos.json")
+    .then(response => response.json())
+    .then(data => {
+        productos = data;
+        cargarProductos(productos);
+    })
 
 
-const bebidas = [
-  { nombre: "Jugo de naranja", precio: 1.50 },
-  { nombre: "Café", precio: 2.00 },
-  { nombre: "Capuccino", precio: 2.50 },
-  { nombre: "Té", precio: 1.50 },
-  { nombre: "Leche", precio: 1.50 },
-  { nombre: "Leche de Almendras", precio: 2.50 },
-  { nombre: "Yogur", precio: 2.00 },
-];
-
-const comidas = [ 
-  { nombre: "Huevos revueltos", precio: 1.50 },
-  { nombre: "Croissants de chocolate", precio: 3.00 },
-  { nombre: "Selección de frutas", precio: 2.00 },
-  { nombre: "Panqueques de lentejas", precio: 2.00 },
-  { nombre: "Panqueques de lentejas", precio: 2.00 },
- 
-];
+const contenedorProductos = document.querySelector("#contenedor-productos");
+const botonesCategorias = document.querySelectorAll(".boton-categoria");
+const tituloPrincipal = document.querySelector("#titulo-principal");
+let botonesAgregar = document.querySelectorAll(".producto-agregar");
+const numerito = document.querySelector("#numerito");
 
 
-function imprimirMenu(menu) {
-  prompt("----- MENÚ -----");
-  menu.forEach((item) => {
-    prompt(`${item.nombre}: $${item.precio}`);
-  });
-  prompt("-----------------");
+botonesCategorias.forEach(boton => boton.addEventListener("click", () => {
+    aside.classList.remove("aside-visible");
+}))
+
+
+function cargarProductos(productosElegidos) {
+
+    contenedorProductos.innerHTML = "";
+
+    productosElegidos.forEach(producto => {
+
+        const div = document.createElement("div");
+        div.classList.add("producto");
+        div.innerHTML = `
+            <img class="producto-imagen" src="${producto.imagen}" alt="${producto.titulo}">
+            <div class="producto-detalles">
+                <h3 class="producto-titulo">${producto.titulo}</h3>
+                <p class="producto-precio">$${producto.precio}</p>
+                <button class="producto-agregar" id="${producto.id}">Agregar</button>
+            </div>
+        `;
+
+        contenedorProductos.append(div);
+    })
+
+    actualizarBotonesAgregar();
 }
 
-imprimirMenu(bebidas);
-imprimirMenu(comidas);
 
-function calcularTotal(bebidaSeleccionada, comidaSeleccionada) {
-  const bebida = bebidas.find((item) => item.nombre === bebidaSeleccionada);
+botonesCategorias.forEach(boton => {
+    boton.addEventListener("click", (e) => {
 
-  const comida = comidas.find((item) => item.nombre === comidaSeleccionada);
+        botonesCategorias.forEach(boton => boton.classList.remove("active"));
+        e.currentTarget.classList.add("active");
 
-  const total = bebida.precio + comida.precio;
+        if (e.currentTarget.id != "todos") {
+            const productoCategoria = productos.find(producto => producto.categoria.id === e.currentTarget.id);
+            tituloPrincipal.innerText = productoCategoria.categoria.nombre;
+            const productosBoton = productos.filter(producto => producto.categoria.id === e.currentTarget.id);
+            cargarProductos(productosBoton);
+        } else {
+            tituloPrincipal.innerText = "Todos los productos";
+            cargarProductos(productos);
+        }
 
-  alert(`El total del desayuno es: $${total}`);
+    })
+});
+
+function actualizarBotonesAgregar() {
+    botonesAgregar = document.querySelectorAll(".producto-agregar");
+
+    botonesAgregar.forEach(boton => {
+        boton.addEventListener("click", agregarAlCarrito);
+    });
 }
 
-const bebidaSeleccionada = prompt("Por favor, seleccione una bebida:");
-const comidaSeleccionada = prompt("Por favor, seleccione una comida:");
+let productosEnCarrito;
 
+let productosEnCarritoLS = localStorage.getItem("productos-en-carrito");
 
-calcularTotal(bebidaSeleccionada, comidaSeleccionada);
-// Obtener los elementos del DOM
-const form = document.getElementById('menu-form');
-const items = form.elements['item'];
-const quantity = form.elements['quantity'];
-
-// Crear un objeto para almacenar los datos seleccionados por el usuario
-const selectedItems = {};
-
-// Iterar sobre los elementos seleccionados y agregarlos al objeto
-for (let i = 0; i < items.length; i++) {
-  if (items[i].checked) {
-    selectedItems[items[i].value] = quantity[i].value;
-  }
+if (productosEnCarritoLS) {
+    productosEnCarrito = JSON.parse(productosEnCarritoLS);
+    actualizarNumerito();
+} else {
+    productosEnCarrito = [];
 }
 
-// Convertir el objeto en JSON y guardarlo en el almacenamiento web
-localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
+function agregarAlCarrito(e) {
 
+    Toastify({
+        text: "Producto agregado",
+        duration: 3000,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+          background: "linear-gradient(to right, #4b33a8, #785ce9)",
+          borderRadius: "2rem",
+          textTransform: "uppercase",
+          fontSize: ".75rem"
+        },
+        offset: {
+            x: '1.5rem', // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+            y: '1.5rem' // vertical axis - can be a number or a string indicating unity. eg: '2em'
+          },
+        onClick: function(){} // Callback after click
+      }).showToast();
 
+    const idBoton = e.currentTarget.id;
+    const productoAgregado = productos.find(producto => producto.id === idBoton);
 
+    if(productosEnCarrito.some(producto => producto.id === idBoton)) {
+        const index = productosEnCarrito.findIndex(producto => producto.id === idBoton);
+        productosEnCarrito[index].cantidad++;
+    } else {
+        productoAgregado.cantidad = 1;
+        productosEnCarrito.push(productoAgregado);
+    }
 
+    actualizarNumerito();
 
+    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
+}
+
+function actualizarNumerito() {
+    let nuevoNumerito = productosEnCarrito.reduce((acc, producto) => acc + producto.cantidad, 0);
+    numerito.innerText = nuevoNumerito;
+}
